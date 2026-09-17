@@ -158,19 +158,19 @@ export default function HeroManager() {
   }
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-8 font-sans">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-8 font-sans text-slate-100">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#0b1326] p-6 rounded-2xl border border-slate-800 shadow-md">
         <div>
           <div className="flex items-center gap-2">
-            <span className="p-2 rounded-lg bg-primary/10 text-primary">
+            <span className="p-2 rounded-lg bg-primary/20 text-primary border border-primary/30">
               <HiOutlineSparkles className="w-5 h-5" />
             </span>
-            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Hero Section Management
             </h1>
           </div>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1">
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">
             Edit titles, highlight colors, floating badge labels, logo, subtitle & locations dynamically.
           </p>
         </div>
@@ -178,7 +178,7 @@ export default function HeroManager() {
         <button
           onClick={handleSubmit}
           disabled={saving}
-          className="flex items-center justify-center gap-2 px-6 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-xl font-semibold shadow-md shadow-primary/20 transition-all cursor-pointer disabled:opacity-50"
+          className="flex items-center justify-center gap-2 px-6 py-2.5 bg-primary hover:bg-primary-hover text-white rounded-xl font-semibold shadow-md shadow-primary/20 transition-all cursor-pointer disabled:opacity-50"
         >
           {saving ? (
             <>
@@ -199,14 +199,14 @@ export default function HeroManager() {
         <div
           className={`p-4 rounded-xl text-sm font-medium flex items-center gap-3 ${
             statusMessage.type === "success"
-              ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-              : "bg-red-50 text-red-700 border border-red-200"
+              ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
+              : "bg-red-500/10 text-red-400 border border-red-500/30"
           }`}
         >
           {statusMessage.type === "success" ? (
-            <HiOutlineCheckCircle className="w-5 h-5 shrink-0 text-emerald-600" />
+            <HiOutlineCheckCircle className="w-5 h-5 shrink-0 text-emerald-400" />
           ) : (
-            <div className="w-2 h-2 rounded-full bg-red-600 shrink-0" />
+            <div className="w-2 h-2 rounded-full bg-red-400 shrink-0" />
           )}
           <span>{statusMessage.text}</span>
         </div>
@@ -216,35 +216,35 @@ export default function HeroManager() {
       <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6">
           {/* Card 1: Logo & Brand */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs space-y-4">
-            <h2 className="text-base font-bold text-gray-900 border-b border-gray-100 pb-3 flex items-center gap-2">
+          <div className="bg-[#0b1326] p-6 rounded-2xl border border-slate-800 shadow-md space-y-4">
+            <h2 className="text-base font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
               <HiOutlinePhotograph className="w-5 h-5 text-primary" />
               <span>Logo Settings</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">Logo Image Upload</label>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">Logo Image Upload</label>
                 <ImageUploader setImage={setImageFile} initialImage={formData.logoUrl} />
               </div>
               <div className="space-y-3">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1">Logo URL (Direct Link)</label>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1">Logo URL (Direct Link)</label>
                   <input
                     type="text"
                     value={formData.logoUrl}
                     onChange={(e) => handleChange("logoUrl", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
                     placeholder="/images/logo.webp"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1">Logo Alt Text</label>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1">Logo Alt Text</label>
                   <input
                     type="text"
                     value={formData.logoAlt}
                     onChange={(e) => handleChange("logoAlt", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
-                    placeholder="Pyush AnandLogo"
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
+                    placeholder="Pyush Anand Logo"
                   />
                 </div>
               </div>
@@ -252,100 +252,100 @@ export default function HeroManager() {
           </div>
 
           {/* Card 2: Main Heading Lines */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs space-y-6">
-            <h2 className="text-base font-bold text-gray-900 border-b border-gray-100 pb-3">
+          <div className="bg-[#0b1326] p-6 rounded-2xl border border-slate-800 shadow-md space-y-6">
+            <h2 className="text-base font-bold text-white border-b border-slate-800 pb-3">
               Main Heading Content & Badges
             </h2>
 
             {/* Line 1 */}
-            <div className="p-4 bg-gray-50/60 rounded-xl border border-gray-100 space-y-3">
-              <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Line 1 Elements</h3>
+            <div className="p-4 bg-[#121c33] rounded-xl border border-slate-800 space-y-3">
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Line 1 Elements</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Line 1 Prefix Text</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Line 1 Prefix Text</label>
                   <input
                     type="text"
                     value={formData.titleLine1Prefix}
                     onChange={(e) => handleChange("titleLine1Prefix", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-primary"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white focus:outline-none focus:border-primary"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Highlighted Word 1</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Highlighted Word 1</label>
                   <input
                     type="text"
                     value={formData.highlight1Text}
                     onChange={(e) => handleChange("highlight1Text", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-primary"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white focus:outline-none focus:border-primary"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Underline Color 1</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Underline Color 1</label>
                   <div className="flex items-center gap-2">
                     <input
                       type="color"
                       value={formData.highlight1Color}
                       onChange={(e) => handleChange("highlight1Color", e.target.value)}
-                      className="w-8 h-8 rounded border border-gray-200 cursor-pointer"
+                      className="w-8 h-8 rounded border border-slate-700 cursor-pointer bg-transparent"
                     />
                     <input
                       type="text"
                       value={formData.highlight1Color}
                       onChange={(e) => handleChange("highlight1Color", e.target.value)}
-                      className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white"
+                      className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Badge 1 Text</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Badge 1 Text</label>
                   <input
                     type="text"
                     value={formData.badge1Text}
                     onChange={(e) => handleChange("badge1Text", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-primary"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white focus:outline-none focus:border-primary"
                   />
                 </div>
               </div>
             </div>
 
             {/* Line 2 */}
-            <div className="p-4 bg-gray-50/60 rounded-xl border border-gray-100 space-y-3">
-              <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Line 2 Elements</h3>
+            <div className="p-4 bg-[#121c33] rounded-xl border border-slate-800 space-y-3">
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Line 2 Elements</h3>
               <div>
-                <label className="block text-xs font-medium text-gray-600 mb-1">Line 2 Full Text</label>
+                <label className="block text-xs font-medium text-slate-300 mb-1">Line 2 Full Text</label>
                 <input
                   type="text"
                   value={formData.titleLine2}
                   onChange={(e) => handleChange("titleLine2", e.target.value)}
-                  className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white focus:outline-none focus:border-primary"
+                  className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white focus:outline-none focus:border-primary"
                 />
               </div>
             </div>
 
             {/* Line 3 */}
-            <div className="p-4 bg-gray-50/60 rounded-xl border border-gray-100 space-y-3">
-              <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Line 3 Elements</h3>
+            <div className="p-4 bg-[#121c33] rounded-xl border border-slate-800 space-y-3">
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Line 3 Elements</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Highlighted Word 2</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Highlighted Word 2</label>
                   <input
                     type="text"
                     value={formData.highlight2Text}
                     onChange={(e) => handleChange("highlight2Text", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Badge 2 Text</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Badge 2 Text</label>
                   <input
                     type="text"
                     value={formData.badge2Text}
                     onChange={(e) => handleChange("badge2Text", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Badge 2 Color</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Badge 2 Color</label>
                   <input
                     type="color"
                     value={formData.highlight2Color}
@@ -353,53 +353,53 @@ export default function HeroManager() {
                       handleChange("highlight2Color", e.target.value);
                       handleChange("badge2Color", e.target.value);
                     }}
-                    className="w-full h-8 rounded border border-gray-200 cursor-pointer"
+                    className="w-full h-8 rounded border border-slate-700 cursor-pointer bg-transparent"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Middle Text ("and a")</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Middle Text ("and a")</label>
                   <input
                     type="text"
                     value={formData.titleLine3Middle}
                     onChange={(e) => handleChange("titleLine3Middle", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Suffix Text ("for")</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Suffix Text ("for")</label>
                   <input
                     type="text"
                     value={formData.titleLine3Suffix}
                     onChange={(e) => handleChange("titleLine3Suffix", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Highlighted Word 3</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Highlighted Word 3</label>
                   <input
                     type="text"
                     value={formData.highlight3Text}
                     onChange={(e) => handleChange("highlight3Text", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Badge 3 Text</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Badge 3 Text</label>
                   <input
                     type="text"
                     value={formData.badge3Text}
                     onChange={(e) => handleChange("badge3Text", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Badge 3 Color</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Badge 3 Color</label>
                   <input
                     type="color"
                     value={formData.highlight3Color}
@@ -407,36 +407,36 @@ export default function HeroManager() {
                       handleChange("highlight3Color", e.target.value);
                       handleChange("badge3Color", e.target.value);
                     }}
-                    className="w-full h-8 rounded border border-gray-200 cursor-pointer"
+                    className="w-full h-8 rounded border border-slate-700 cursor-pointer bg-transparent"
                   />
                 </div>
               </div>
             </div>
 
             {/* Line 4 */}
-            <div className="p-4 bg-gray-50/60 rounded-xl border border-gray-100 space-y-3">
-              <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Line 4 Elements</h3>
+            <div className="p-4 bg-[#121c33] rounded-xl border border-slate-800 space-y-3">
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Line 4 Elements</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Highlighted Word 4</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Highlighted Word 4</label>
                   <input
                     type="text"
                     value={formData.highlight4Text}
                     onChange={(e) => handleChange("highlight4Text", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Badge 4 Text</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Badge 4 Text</label>
                   <input
                     type="text"
                     value={formData.badge4Text}
                     onChange={(e) => handleChange("badge4Text", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Badge 4 Color</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Badge 4 Color</label>
                   <input
                     type="color"
                     value={formData.highlight4Color}
@@ -444,32 +444,32 @@ export default function HeroManager() {
                       handleChange("highlight4Color", e.target.value);
                       handleChange("badge4Color", e.target.value);
                     }}
-                    className="w-full h-8 rounded border border-gray-200 cursor-pointer"
+                    className="w-full h-8 rounded border border-slate-700 cursor-pointer bg-transparent"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Highlighted Word 5</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Highlighted Word 5</label>
                   <input
                     type="text"
                     value={formData.highlight5Text}
                     onChange={(e) => handleChange("highlight5Text", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Badge 5 Text</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Badge 5 Text</label>
                   <input
                     type="text"
                     value={formData.badge5Text}
                     onChange={(e) => handleChange("badge5Text", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-gray-200 bg-white"
+                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-700 bg-[#0b1326] text-white"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-600 mb-1">Badge 5 Color</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Badge 5 Color</label>
                   <input
                     type="color"
                     value={formData.highlight5Color}
@@ -477,7 +477,7 @@ export default function HeroManager() {
                       handleChange("highlight5Color", e.target.value);
                       handleChange("badge5Color", e.target.value);
                     }}
-                    className="w-full h-8 rounded border border-gray-200 cursor-pointer"
+                    className="w-full h-8 rounded border border-slate-700 cursor-pointer bg-transparent"
                   />
                 </div>
               </div>
@@ -485,43 +485,43 @@ export default function HeroManager() {
           </div>
 
           {/* Card 3: Subtitle Pill & Bottom Badge */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs space-y-4">
-            <h2 className="text-base font-bold text-gray-900 border-b border-gray-100 pb-3">
+          <div className="bg-[#0b1326] p-6 rounded-2xl border border-slate-800 shadow-md space-y-4">
+            <h2 className="text-base font-bold text-white border-b border-slate-800 pb-3">
               Subtitle Pill & Subtitle Badge
             </h2>
             <div>
-              <label className="block text-xs font-semibold text-gray-600 mb-1">Subtitle Text</label>
+              <label className="block text-xs font-semibold text-slate-300 mb-1">Subtitle Text</label>
               <textarea
                 rows={3}
                 value={formData.subtitle}
                 onChange={(e) => handleChange("subtitle", e.target.value)}
-                className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+                className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
               />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">Subtitle Floating Badge Text</label>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">Subtitle Floating Badge Text</label>
                 <input
                   type="text"
                   value={formData.badge6Text}
                   onChange={(e) => handleChange("badge6Text", e.target.value)}
-                  className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">Subtitle Floating Badge Color</label>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">Subtitle Floating Badge Color</label>
                 <div className="flex items-center gap-2">
                   <input
                     type="color"
                     value={formData.badge6Color}
                     onChange={(e) => handleChange("badge6Color", e.target.value)}
-                    className="w-8 h-8 rounded border border-gray-200 cursor-pointer"
+                    className="w-8 h-8 rounded border border-slate-700 cursor-pointer bg-transparent"
                   />
                   <input
                     type="text"
                     value={formData.badge6Color}
                     onChange={(e) => handleChange("badge6Color", e.target.value)}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50"
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white"
                   />
                 </div>
               </div>
@@ -529,8 +529,8 @@ export default function HeroManager() {
           </div>
 
           {/* Card 4: Footer Location Tags */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs space-y-4">
-            <h2 className="text-base font-bold text-gray-900 border-b border-gray-100 pb-3 flex items-center gap-2">
+          <div className="bg-[#0b1326] p-6 rounded-2xl border border-slate-800 shadow-md space-y-4">
+            <h2 className="text-base font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
               <HiOutlineTag className="w-5 h-5 text-primary" />
               <span>Location Tags (Footer Bar)</span>
             </h2>
@@ -542,12 +542,12 @@ export default function HeroManager() {
                 onChange={(e) => setNewLocation(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), handleAddLocation())}
                 placeholder="Add location (e.g. Toronto)"
-                className="flex-1 px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+                className="flex-1 px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white placeholder-slate-500 focus:bg-[#16233f] focus:border-primary focus:outline-none"
               />
               <button
                 type="button"
                 onClick={handleAddLocation}
-                className="px-4 py-2 bg-primary text-white text-xs font-semibold rounded-xl flex items-center gap-1 hover:bg-primary/90 cursor-pointer"
+                className="px-4 py-2 bg-primary text-white text-xs font-semibold rounded-xl flex items-center gap-1 hover:bg-primary-hover cursor-pointer shadow-sm"
               >
                 <HiOutlinePlus className="w-4 h-4" />
                 <span>Add Tag</span>
@@ -558,13 +558,13 @@ export default function HeroManager() {
               {formData.locations.map((loc, idx) => (
                 <span
                   key={idx}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 border border-gray-200 text-gray-800 rounded-full text-xs font-medium"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#121c33] border border-slate-700 text-slate-200 rounded-full text-xs font-medium"
                 >
                   <span>{loc}</span>
                   <button
                     type="button"
                     onClick={() => handleRemoveLocation(idx)}
-                    className="text-gray-400 hover:text-red-500 cursor-pointer"
+                    className="text-slate-400 hover:text-red-400 cursor-pointer"
                   >
                     <HiOutlineTrash className="w-3.5 h-3.5" />
                   </button>

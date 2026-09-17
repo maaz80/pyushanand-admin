@@ -4,12 +4,12 @@
   --font-sans: "Poppins", sans-serif;
   --color-primary: #0071E5;
   --color-primary-hover: #024d9b;
-  --color-primary-light: #f0f7ff;
-  --color-secondary: #26394D;
-  --color-orange-50: #f0f7ff;
-  --color-orange-100: #dbeafe;
-  --color-orange-200: #bfdbfe;
-  --color-orange-300: #93c5fd;
+  --color-primary-light: #182645;
+  --color-secondary: #14203A;
+  --color-orange-50: #182645;
+  --color-orange-100: #1e335a;
+  --color-orange-200: #254174;
+  --color-orange-300: #2b5093;
   --color-orange-400: #3b82f6;
   --color-orange-500: #0071E5;
   --color-orange-600: #024d9b;
@@ -19,6 +19,11 @@
 /* Force Poppins on all elements, including inputs and form elements */
 *, *::before, *::after {
   font-family: "Poppins", "Open Sans", sans-serif;
+}
+
+body {
+  background-color: #14203A;
+  color: #f1f5f9;
 }
 
 .poppins-regular {

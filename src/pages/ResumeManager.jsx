@@ -182,26 +182,26 @@ export default function ResumeManager() {
   }
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-8 font-sans">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-8 font-sans text-slate-100">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#0b1326] p-6 rounded-2xl border border-slate-800 shadow-md">
         <div>
           <div className="flex items-center gap-2">
-            <span className="p-2 rounded-lg bg-primary/10 text-primary">
+            <span className="p-2 rounded-lg bg-primary/20 text-primary border border-primary/30">
               <BriefcaseIcon className="w-5 h-5" />
             </span>
-            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Resume Section Management
             </h1>
           </div>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1">
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">
             Manage section titles, background intro, and add/edit/delete work experiences dynamically.
           </p>
         </div>
 
         <button
           onClick={handleOpenAddModal}
-          className="flex items-center justify-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-xl font-semibold shadow-md shadow-primary/20 transition-all cursor-pointer"
+          className="flex items-center justify-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary-hover text-white rounded-xl font-semibold shadow-md shadow-primary/20 transition-all cursor-pointer"
         >
           <PlusIcon className="w-5 h-5" />
           <span>Add Experience</span>
@@ -213,29 +213,29 @@ export default function ResumeManager() {
         <div
           className={`p-4 rounded-xl text-sm font-medium flex items-center gap-3 ${
             statusMessage.type === "success"
-              ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-              : "bg-red-50 text-red-700 border border-red-200"
+              ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
+              : "bg-red-500/10 text-red-400 border border-red-500/30"
           }`}
         >
           {statusMessage.type === "success" ? (
-            <CheckIcon className="w-5 h-5 shrink-0 text-emerald-600" />
+            <CheckIcon className="w-5 h-5 shrink-0 text-emerald-400" />
           ) : (
-            <div className="w-2 h-2 rounded-full bg-red-600 shrink-0" />
+            <div className="w-2 h-2 rounded-full bg-red-400 shrink-0" />
           )}
           <span>{statusMessage.text}</span>
         </div>
       )}
 
       {/* Header Settings Form */}
-      <form onSubmit={handleSaveHeader} className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs space-y-4">
-        <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-          <h2 className="text-base font-bold text-gray-900">
+      <form onSubmit={handleSaveHeader} className="bg-[#0b1326] p-6 rounded-2xl border border-slate-800 shadow-md space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <h2 className="text-base font-bold text-white">
             Resume Section Settings
           </h2>
           <button
             type="submit"
             disabled={savingHeader}
-            className="flex items-center gap-1.5 px-4 py-2 bg-gray-900 hover:bg-black text-white text-xs font-semibold rounded-xl transition-all cursor-pointer disabled:opacity-50"
+            className="flex items-center gap-1.5 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold rounded-xl transition-all cursor-pointer disabled:opacity-50 border border-slate-700"
           >
             {savingHeader ? (
               <>
@@ -253,80 +253,80 @@ export default function ResumeManager() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-gray-600 mb-1">Section Title</label>
+            <label className="block text-xs font-semibold text-slate-300 mb-1">Section Title</label>
             <input
               type="text"
               value={headerData.sectionTitle}
               onChange={(e) => setHeaderData({ ...headerData, sectionTitle: e.target.value })}
-              className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+              className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-600 mb-1">Timeline Column Label</label>
+            <label className="block text-xs font-semibold text-slate-300 mb-1">Timeline Column Label</label>
             <input
               type="text"
               value={headerData.experienceLabel}
               onChange={(e) => setHeaderData({ ...headerData, experienceLabel: e.target.value })}
-              className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+              className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
               placeholder="Professional Experiences"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-gray-600 mb-1">Section Description Paragraph</label>
+          <label className="block text-xs font-semibold text-slate-300 mb-1">Section Description Paragraph</label>
           <textarea
             rows={3}
             value={headerData.description}
             onChange={(e) => setHeaderData({ ...headerData, description: e.target.value })}
-            className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none leading-relaxed"
+            className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none leading-relaxed"
           />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
           <div>
-            <label className="block text-xs font-semibold text-gray-600 mb-1">Download Resume Button Text</label>
+            <label className="block text-xs font-semibold text-slate-300 mb-1">Download Resume Button Text</label>
             <input
               type="text"
               value={headerData.downloadText}
               onChange={(e) => setHeaderData({ ...headerData, downloadText: e.target.value })}
-              className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+              className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
               placeholder="download resume"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-600 mb-1">Download Resume Link / PDF URL</label>
+            <label className="block text-xs font-semibold text-slate-300 mb-1">Download Resume Link / PDF URL</label>
             <div className="relative">
               <input
                 type="text"
                 value={headerData.downloadLink}
                 onChange={(e) => setHeaderData({ ...headerData, downloadLink: e.target.value })}
-                className="w-full pl-3 pr-8 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+                className="w-full pl-3 pr-8 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
                 placeholder="#download-resume or https://..."
               />
-              <DownloadIcon className="w-4 h-4 text-gray-400 absolute right-2.5 top-2.5 pointer-events-none" />
+              <DownloadIcon className="w-4 h-4 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none" />
             </div>
           </div>
         </div>
       </form>
 
       {/* Experiences List Card */}
-      <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-xs space-y-6">
-        <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+      <div className="bg-[#0b1326] p-6 rounded-2xl border border-slate-800 shadow-md space-y-6">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <div>
-            <h2 className="text-base font-bold text-gray-900">
+            <h2 className="text-base font-bold text-white">
               Work Experiences ({experiences.length})
             </h2>
-            <p className="text-xs text-gray-500 mt-0.5">
+            <p className="text-xs text-slate-400 mt-0.5">
               Add new roles or edit timeline entries. They will render in order on the portfolio.
             </p>
           </div>
 
           <button
             onClick={handleOpenAddModal}
-            className="flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-primary/90 text-white text-xs font-semibold rounded-xl cursor-pointer shadow-sm"
+            className="flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded-xl cursor-pointer shadow-sm"
           >
             <PlusIcon className="w-4 h-4" />
             <span>Add Experience</span>
@@ -335,48 +335,48 @@ export default function ResumeManager() {
 
         {/* Timeline List */}
         {experiences.length === 0 ? (
-          <div className="p-8 text-center bg-gray-50 rounded-2xl border border-dashed border-gray-200">
-            <p className="text-sm font-semibold text-gray-600">No work experiences found</p>
-            <p className="text-xs text-gray-400 mt-1">Click "Add Experience" to add your first work history entry.</p>
+          <div className="p-8 text-center bg-[#121c33] rounded-2xl border border-dashed border-slate-700">
+            <p className="text-sm font-semibold text-slate-300">No work experiences found</p>
+            <p className="text-xs text-slate-400 mt-1">Click "Add Experience" to add your first work history entry.</p>
           </div>
         ) : (
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y divide-slate-800/80">
             {experiences.map((exp, idx) => (
               <div
                 key={exp._id || idx}
-                className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-gray-50/80 px-4 rounded-xl transition-colors"
+                className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#121c33] px-4 rounded-xl transition-colors"
               >
                 <div className="space-y-0.5 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0">
+                    <span className="w-6 h-6 rounded-full bg-primary/20 text-primary border border-primary/30 text-xs font-bold flex items-center justify-center shrink-0">
                       {idx + 1}
                     </span>
-                    <h3 className="font-bold text-sm text-gray-900 truncate">
+                    <h3 className="font-bold text-sm text-white truncate">
                       {exp.company}
                     </h3>
                   </div>
-                  <p className="text-xs text-gray-600 font-medium pl-8">
+                  <p className="text-xs text-slate-300 font-medium pl-8">
                     {exp.role}
                   </p>
                 </div>
 
                 <div className="flex items-center justify-between sm:justify-end gap-6 pl-8 sm:pl-0">
-                  <div className="text-left sm:text-right text-xs text-gray-500 space-y-0.5">
-                    <p className="font-medium text-gray-700">{exp.location}</p>
-                    <p className="text-gray-400">{exp.period}</p>
+                  <div className="text-left sm:text-right text-xs text-slate-400 space-y-0.5">
+                    <p className="font-medium text-slate-200">{exp.location}</p>
+                    <p className="text-slate-400">{exp.period}</p>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => handleOpenEditModal(exp)}
-                      className="p-1.5 rounded-lg bg-white border border-gray-200 text-gray-700 hover:text-primary hover:border-primary cursor-pointer transition-colors"
+                      className="p-1.5 rounded-lg bg-[#0b1326] border border-slate-700 text-slate-300 hover:text-primary hover:border-primary cursor-pointer transition-colors"
                       title="Edit Experience"
                     >
                       <PencilIcon className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => handleDeleteExperience(exp._id, exp.company)}
-                      className="p-1.5 rounded-lg bg-white border border-gray-200 text-gray-700 hover:text-red-600 hover:border-red-200 cursor-pointer transition-colors"
+                      className="p-1.5 rounded-lg bg-[#0b1326] border border-slate-700 text-slate-300 hover:text-red-400 hover:border-red-500/30 cursor-pointer transition-colors"
                       title="Delete Experience"
                     >
                       <TrashIcon className="w-4 h-4" />
@@ -391,15 +391,15 @@ export default function ResumeManager() {
 
       {/* Add / Edit Experience Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
-          <div className="bg-white w-full max-w-lg rounded-3xl border border-gray-200 shadow-2xl p-6 sm:p-8 space-y-6">
-            <div className="flex items-center justify-between border-b border-gray-100 pb-4">
-              <h2 className="text-lg font-bold text-gray-900">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs">
+          <div className="bg-[#0b1326] text-slate-100 w-full max-w-lg rounded-3xl border border-slate-800 shadow-2xl p-6 sm:p-8 space-y-6">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+              <h2 className="text-lg font-bold text-white">
                 {editingId ? "Edit Work Experience" : "Add New Work Experience"}
               </h2>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-1 rounded-lg text-gray-400 hover:text-gray-700 cursor-pointer"
+                className="p-1 rounded-lg text-slate-400 hover:text-slate-200 cursor-pointer"
               >
                 <CloseIcon className="w-5 h-5" />
               </button>
@@ -407,7 +407,7 @@ export default function ResumeManager() {
 
             <form onSubmit={handleSaveExperience} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                <label className="block text-xs font-semibold text-slate-300 mb-1">
                   Company / Organization Name
                 </label>
                 <input
@@ -415,13 +415,13 @@ export default function ResumeManager() {
                   required
                   value={modalFormData.company}
                   onChange={(e) => setModalFormData({ ...modalFormData, company: e.target.value })}
-                  className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
                   placeholder="Designit - a Wipro Company"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                <label className="block text-xs font-semibold text-slate-300 mb-1">
                   Job Role / Title
                 </label>
                 <input
@@ -429,52 +429,52 @@ export default function ResumeManager() {
                   required
                   value={modalFormData.role}
                   onChange={(e) => setModalFormData({ ...modalFormData, role: e.target.value })}
-                  className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
                   placeholder="Principal Experience Designer"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1">
+                  <label className="block text-xs font-semibold text-slate-300 mb-1">
                     Location
                   </label>
                   <input
                     type="text"
                     value={modalFormData.location}
                     onChange={(e) => setModalFormData({ ...modalFormData, location: e.target.value })}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
                     placeholder="Bengaluru, India"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1">
+                  <label className="block text-xs font-semibold text-slate-300 mb-1">
                     Period / Timeframe
                   </label>
                   <input
                     type="text"
                     value={modalFormData.period}
                     onChange={(e) => setModalFormData({ ...modalFormData, period: e.target.value })}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:border-primary focus:outline-none"
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
                     placeholder="2022 - Present"
                   />
                 </div>
               </div>
 
               {/* Submit / Cancel Buttons */}
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-100">
+              <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-800">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-5 py-2.5 text-xs font-semibold text-gray-600 hover:text-gray-900 border border-gray-200 rounded-xl cursor-pointer"
+                  className="px-5 py-2.5 text-xs font-semibold text-slate-300 hover:text-white border border-slate-700 rounded-xl cursor-pointer hover:bg-slate-800"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={savingItem}
-                  className="flex items-center gap-1.5 px-6 py-2.5 bg-primary hover:bg-primary/90 text-white text-xs font-semibold rounded-xl cursor-pointer disabled:opacity-50 shadow-md shadow-primary/20"
+                  className="flex items-center gap-1.5 px-6 py-2.5 bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded-xl cursor-pointer disabled:opacity-50 shadow-md shadow-primary/20"
                 >
                   {savingItem ? (
                     <>

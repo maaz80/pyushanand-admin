@@ -47,7 +47,7 @@ export default function ImageUploader({ setImage, initialImage }) {
                onDragOver={(e) => e.preventDefault()}
                onDrop={handleDrop}
                onClick={() => inputRef.current?.click()}
-               className="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center cursor-pointer hover:border-orange-500 transition-colors bg-gray-50/50 hover:bg-orange-50/20"
+               className="border-2 border-dashed border-slate-700 rounded-xl p-4 text-center cursor-pointer hover:border-primary transition-colors bg-[#121c33] hover:bg-[#182440]"
           >
                <input
                     ref={inputRef}
@@ -69,12 +69,12 @@ export default function ImageUploader({ setImage, initialImage }) {
                               className="max-h-36 max-w-full object-contain rounded-lg shadow-sm"
                               onError={() => setPreview(null)}
                          />
-                         <span className="text-[10px] text-gray-400 mt-1 hover:text-orange-600 transition-colors">Click or drop new file to replace image</span>
+                         <span className="text-[10px] text-slate-400 mt-1 hover:text-primary transition-colors">Click or drop new file to replace image</span>
                     </div>
                ) : (
-                    <div className="py-2 text-gray-400">
-                         <p className="text-xs font-semibold text-gray-600">Drop image here or click to upload</p>
-                         <p className="text-[10px] text-gray-400 mt-0.5">Supports PNG, JPG, WEBP</p>
+                    <div className="py-2 text-slate-400">
+                         <p className="text-xs font-semibold text-slate-200">Drop image here or click to upload</p>
+                         <p className="text-[10px] text-slate-400 mt-0.5">Supports PNG, JPG, WEBP</p>
                     </div>
                )}
           </div>

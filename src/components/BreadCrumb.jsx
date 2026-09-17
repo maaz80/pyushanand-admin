@@ -13,12 +13,12 @@ const Breadcrumb = () => {
                : pathnames;
 
      return (
-          <div className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-100 mb-6 shrink-0 w-full">
-               <div className="flex items-center gap-2 text-xs text-gray-500 font-medium font-sans">
+          <div className="flex items-center justify-between px-6 py-4 bg-[#0b1326] border-b border-slate-800 mb-6 shrink-0 w-full text-slate-300">
+               <div className="flex items-center gap-2 text-xs text-slate-400 font-medium font-sans">
                     {/* Home Link */}
                     <Link
                          to="/"
-                         className="flex items-center gap-1.5 hover:text-orange-500 transition-colors"
+                         className="flex items-center gap-1.5 hover:text-primary transition-colors text-slate-300"
                     >
                          <HiOutlineHome className="w-3.5 h-3.5" />
                          <span>Home</span>
@@ -34,15 +34,15 @@ const Breadcrumb = () => {
 
                          return (
                               <div key={routeTo} className="flex items-center gap-2">
-                                   <HiChevronRight className="w-3.5 h-3.5 text-gray-400" />
+                                   <HiChevronRight className="w-3.5 h-3.5 text-slate-500" />
                                    {isLast ? (
-                                        <span className="text-gray-950 font-semibold truncate max-w-[150px] sm:max-w-[300px]">
+                                        <span className="text-white font-semibold truncate max-w-[150px] sm:max-w-[300px]">
                                              {label}
                                         </span>
                                    ) : (
                                         <Link
                                              to={routeTo}
-                                             className="hover:text-orange-500 transition-colors truncate max-w-[150px] sm:max-w-[300px]"
+                                             className="hover:text-primary transition-colors truncate max-w-[150px] sm:max-w-[300px] text-slate-300"
                                         >
                                              {label}
                                         </Link>
@@ -56,7 +56,7 @@ const Breadcrumb = () => {
                {pathnames.length > 0 && (
                     <button
                          onClick={() => navigate(-1)}
-                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 hover:text-gray-900 text-gray-600 text-xs font-semibold transition-all duration-200 cursor-pointer shadow-sm font-sans"
+                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-700 bg-[#121c33] hover:bg-[#182440] hover:text-white text-slate-300 text-xs font-semibold transition-all duration-200 cursor-pointer shadow-sm font-sans"
                     >
                          <HiOutlineArrowLeft className="w-3.5 h-3.5" />
                          <span>Back</span>
