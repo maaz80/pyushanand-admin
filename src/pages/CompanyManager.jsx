@@ -11,7 +11,9 @@ import {
 } from "react-icons/hi";
 import ImageUploader from "../components/ImageUploader";
 
-const API = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/api";
+const rawApi = (import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/api").trim();
+const cleanApi = rawApi.replace(/\/+$/, "");
+const API = cleanApi.endsWith("/api") ? cleanApi : `${cleanApi}/api`;
 
 const initialModalForm = {
   name: "",

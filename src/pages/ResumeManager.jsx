@@ -10,7 +10,9 @@ import {
   HiOutlineX as CloseIcon,
 } from "react-icons/hi";
 
-const API = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/api";
+const rawApi = (import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/api").trim();
+const cleanApi = rawApi.replace(/\/+$/, "");
+const API = cleanApi.endsWith("/api") ? cleanApi : `${cleanApi}/api`;
 
 const initialHeaderState = {
   sectionTitle: "Resume",

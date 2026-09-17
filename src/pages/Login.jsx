@@ -3,7 +3,9 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { clearAdminToken, isAdminLoggedIn, setAdminToken } from "../utils/auth.js";
 import { HiOutlineLockClosed, HiOutlineUser, HiOutlineLockOpen } from "react-icons/hi";
 
-const API = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/api";
+const rawApi = (import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/api").trim();
+const cleanApi = rawApi.replace(/\/+$/, "");
+const API = cleanApi.endsWith("/api") ? cleanApi : `${cleanApi}/api`;
 
 export default function Login() {
      const navigate = useNavigate();
