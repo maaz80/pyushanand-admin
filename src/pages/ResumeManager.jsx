@@ -8,6 +8,7 @@ import {
   HiOutlineTrash as TrashIcon,
   HiOutlineDownload as DownloadIcon,
   HiOutlineX as CloseIcon,
+  HiOutlineUpload as UploadIcon,
 } from "react-icons/hi";
 
 const rawApi = (import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/api").trim();
@@ -42,6 +43,47 @@ export default function ResumeManager() {
   const [editingId, setEditingId] = useState(null);
   const [modalFormData, setModalFormData] = useState(initialModalForm);
   const [savingItem, setSavingItem] = useState(false);
+
+  // PDF Upload State
+  const [uploadingPdf, setUploadingPdf] = useState(false);
+  const [pdfFileName, setPdfFileName] = useState("");
+
+  const handleUploadPdf = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.type !== "application/pdf") {
+      alert("Please select a PDF file only.");
+      e.target.value = "";
+      return;
+    }
+
+    setUploadingPdf(true);
+    setPdfFileName(file.name);
+    try {
+      const formData = new FormData();
+      formData.append("resumePdf", file);
+
+      const res = await fetch(`${API}/resume/upload-pdf`, {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to upload PDF.");
+
+      // Update the downloadLink in header data with the uploaded PDF URL
+      setHeaderData((prev) => ({ ...prev, downloadLink: data.data.downloadLink }));
+      setStatusMessage({ type: "success", text: "Resume PDF uploaded successfully! Download link updated." });
+      setTimeout(() => setStatusMessage({ type: "", text: "" }), 4000);
+    } catch (err) {
+      console.error("Upload PDF Error:", err);
+      setStatusMessage({ type: "error", text: err.message || "Failed to upload PDF." });
+    } finally {
+      setUploadingPdf(false);
+      e.target.value = "";
+    }
+  };
 
   useEffect(() => {
     fetchResumeData();
@@ -299,16 +341,52 @@ export default function ResumeManager() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1">Download Resume Link / PDF URL</label>
-            <div className="relative">
-              <input
-                type="text"
-                value={headerData.downloadLink}
-                onChange={(e) => setHeaderData({ ...headerData, downloadLink: e.target.value })}
-                className="w-full pl-3 pr-8 py-2 text-xs rounded-xl border border-slate-700/70 bg-[#121c33] text-white focus:bg-[#16233f] focus:border-primary focus:outline-none"
-                placeholder="#download-resume or https://..."
-              />
-              <DownloadIcon className="w-4 h-4 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none" />
+            <label className="block text-xs font-semibold text-slate-300 mb-1">Upload Resume PDF</label>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <label
+                  className={`flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-xl cursor-pointer transition-all border ${
+                    uploadingPdf
+                      ? "bg-slate-800 text-slate-400 border-slate-700 cursor-not-allowed"
+                      : "bg-primary/20 text-primary border-primary/30 hover:bg-primary/30"
+                  }`}
+                >
+                  {uploadingPdf ? (
+                    <>
+                      <div className="w-3.5 h-3.5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                      <span>Uploading...</span>
+                    </>
+                  ) : (
+                    <>
+                      <UploadIcon className="w-4 h-4" />
+                      <span>Choose PDF</span>
+                    </>
+                  )}
+                  <input
+                    type="file"
+                    accept=".pdf"
+                    onChange={handleUploadPdf}
+                    disabled={uploadingPdf}
+                    className="hidden"
+                  />
+                </label>
+                {headerData.downloadLink && headerData.downloadLink !== "#download-resume" && (
+                  <a
+                    href={headerData.downloadLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-xs text-emerald-400 hover:text-emerald-300 transition-colors"
+                  >
+                    <DownloadIcon className="w-3.5 h-3.5" />
+                    <span>View Current PDF</span>
+                  </a>
+                )}
+              </div>
+              {headerData.downloadLink && headerData.downloadLink !== "#download-resume" && (
+                <p className="text-[10px] text-slate-500 truncate max-w-full" title={headerData.downloadLink}>
+                  Current: {headerData.downloadLink}
+                </p>
+              )}
             </div>
           </div>
         </div>
